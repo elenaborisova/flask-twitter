@@ -10,6 +10,8 @@ engine = create_engine("sqlite:///tweeter.db")
 
 @tweeter.route("/")
 def index():
+    tweets = []
+    liked_tweets = []
     if "username" in session:
         query = f"""
         SELECT u.id, u.picture, u.username, t.tweet, t.id
